@@ -1,0 +1,43 @@
+diff --git a/README.md b/README.md
+index ca7ec62..473eee5 100644
+--- a/README.md
++++ b/README.md
+@@ -1,3 +1,7 @@
+ # textstat
+ 
+-Tiny text statistics: words and lines.
++Tiny text statistics: words, lines, and sentences.
++
++## Usage
++
++    from textstat.count import count_sentences
+diff --git a/tests/test_count.py b/tests/test_count.py
+new file mode 100644
+index 0000000..e2ce8e4
+--- /dev/null
++++ b/tests/test_count.py
+@@ -0,0 +1,9 @@
++from textstat.count import count_lines, count_sentences
++
++
++def test_count_lines_empty():
++    assert count_lines("") == 0
++
++
++def test_count_sentences():
++    assert count_sentences("Hi. Bye! Really?") == 3
+diff --git a/textstat/count.py b/textstat/count.py
+index 4d06d56..7a5141c 100644
+--- a/textstat/count.py
++++ b/textstat/count.py
+@@ -3,4 +3,10 @@ def count_words(text):
+ 
+ 
+ def count_lines(text):
++    if not text:
++        return 0
+     return len(text.splitlines())
++
++
++def count_sentences(text):
++    return sum(text.count(p) for p in ".!?")
