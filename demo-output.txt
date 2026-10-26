@@ -1,0 +1,44 @@
+=== DiffScribe demo — 2026-10-26 07:33 UTC ===
+Model: Qwen2.5-0.5B-Instruct (Q4_K_M, open weights, Apache 2.0)
+Engine: llama.cpp (MIT). 100% local, greedy decoding.
+Input: sample_diff/feature.diff (a real staged diff, made by
+scripts/make-sample-diff.sh from a scratch repo)
+
+--- run 1: full draft with the local model ---
+=== DIFFSCRIBE draft ===
+method: local open-weight model Qwen2.5-0.5B-Instruct (Q4_K_M, Apache 2.0) via llama.cpp (greedy decoding); both texts parsed and validated, stats counted deterministically
+
+COMMIT MESSAGE:
+feat: add docstring for textstat/count.py
+
+Files changed: 3 (+20 -1)
+- README.md: +5 -1 (modified)
+- tests/test_count.py: +9 -0 (added)
+- textstat/count.py: +6 -0 (modified)
+
+CHANGELOG ENTRY (Unreleased):
+- Updated README for easy navigation
+- Added new installation steps
+- Updated tests with new code
+- Improved textstat count functionality
+
+Every number above was counted from the diff by code. The model only worded the texts marked as its own.
+
+--- run 2: deterministic rule-based fallback (--no-llm) ---
+=== DIFFSCRIBE draft ===
+method: rule-based fallback (--no-llm was passed; no model was run)
+
+COMMIT MESSAGE:
+chore: update code (3 files, +20 -1)
+
+Files changed: 3 (+20 -1)
+- README.md: +5 -1 (modified)
+- tests/test_count.py: +9 -0 (added)
+- textstat/count.py: +6 -0 (modified)
+
+CHANGELOG ENTRY (Unreleased):
+- README.md: +5 -1 (modified)
+- tests/test_count.py: +9 -0 (added)
+- textstat/count.py: +6 -0 (modified)
+
+Every number above was counted from the diff by code. The model only worded the texts marked as its own.

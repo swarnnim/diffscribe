@@ -1,0 +1,6 @@
+.venv/
+llamacpp/
+models/
+__pycache__/
+*.pyc
+*.pyo
